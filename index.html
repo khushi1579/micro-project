@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Symptom Checker</title>
+    <link rel="stylesheet" href="./css/main.css">
+</head>
+<body class="bg-image">
+    <main>
+        <div class="container">
+            <h1>Symptom Checker</h1>
+            <form id="symptomForm">
+                <label for="symptoms">Enter your symptoms:</label>
+                <input type="text" id="symptoms" name="symptoms" class="input-padding" placeholder="e.g. headache, fever" required>
+                <button type="submit">Get Treatment</button>
+            </form>
+            <div id="result"></div>
+            <button id="consultDoctorButton">Consult to Doctor</button>
+        </div>
+        <div id="appointmentFormContainer" class="hidden">
+            <div class="appointment-form">
+                <h2>Book an Appointment</h2>
+                <form id="appointmentForm">
+                    <label for="name">Name:</label>
+                    <input class="input-padding" type="text" id="name" name="name" required>
+                    <label for="email">Email:</label>
+                    <input class="input-padding" type="email" id="email" name="email" required>
+                    <label for="date">Preferred Date:</label>
+                    <input class="input-padding" type="date" id="date" name="date" required>
+                    <label for="time">Preferred Time:</label>
+                    <input class="input-padding" type="time" id="time" name="time" required>
+                    <button type="submit">Book Appointment</button>
+                </form>
+            </div>
+        </div>
+    </main>
+    <script src="./js/main.js"></script>
+</body>
+</html>

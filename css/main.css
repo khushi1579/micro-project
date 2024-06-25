@@ -1,11 +1,12 @@
 body {
+    height: 100%;
+    width: 100%;
     font-family: Arial, sans-serif;
     background: url("C:\Users\Shree\Desktop\Cat rain.jpeg") no-repeat center center fixed;
     background-size: cover;
     margin: 0;
     padding: 0;
 }
-
 .container {
     width: 50%;
     margin: 100px auto;
@@ -13,7 +14,12 @@ body {
     background: #fff;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
-
+.bg-image{
+    background-image: url('../images/Cat\ rain.jpeg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
 h1 {
     text-align: center;
 }
@@ -35,6 +41,9 @@ button {
     cursor: pointer;
 }
 
+.input-padding{
+    padding: 12px;
+}
 button:hover {
     background-color: #4cae4c;
 }
@@ -73,6 +82,7 @@ button:hover {
 }
 
 .appointment-form {
+    width: 450px;
     background: white;
     padding: 20px;
     border-radius: 5px;
