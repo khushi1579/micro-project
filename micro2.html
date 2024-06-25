@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Symptom Checker</title>
+    <link rel="stylesheet" href="C:\Users\Shree\Desktop\micro2\micro2.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Symptom Checker</h1>
+        <form id="symptomForm">
+            <label for="symptoms">Enter your symptoms:</label>
+            <input type="text" id="symptoms" name="symptoms" placeholder="e.g. headache, fever" required>
+            <button type="submit">Get Treatment</button>
+        </form>
+        <div id="result"></div>
+        <button id="consultDoctorButton">Consult to Doctor</button>
+    </div>
+    
+    <div id="appointmentFormContainer" class="hidden">
+        <div class="appointment-form">
+            <h2>Book an Appointment</h2>
+            <form id="appointmentForm">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+                <label for="date">Preferred Date:</label>
+                <input type="date" id="date" name="date" required>
+                <label for="time">Preferred Time:</label>
+                <input type="time" id="time" name="time" required>
+                <button type="submit">Book Appointment</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="C:\Users\Shree\Desktop\micro2\micro2.js"></script>
+</body>
+</html>
