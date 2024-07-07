@@ -1,3 +1,31 @@
+const supabaseUrl = 'https://jtwjazpjsnkwprykcwcr.supabase.co'
+const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imp0d2phenBqc25rd3ByeWtjd2NyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MjAzODE3MTUsImV4cCI6MjAzNTk1NzcxNX0.i3_Nxh7EdcWXIwNGTiwtaqwwfN4RtNGMm7cWUx77A98'
+const _supabase = supabase.createClient(supabaseUrl, supabaseKey)
+
+window.onload = async function () {
+    const { data, error } = await _supabase.from('users').select()
+    if(!error && data.length>0){
+        const container = document.getElementById('cards-container');
+        data.forEach(user => {
+            const card = document.createElement('div');
+            card.classList.add('card');
+            card.innerHTML = `
+                <h3>Name: ${user.name}</h3>
+                <h3>Email: ${user.email}</p>
+                <h3>Date: ${user.date}</p>
+                <h3>Time: ${user.time}</p>
+            `;
+            container.appendChild(card);
+        });
+        return;
+    }
+    const container = document.getElementById('cards-container');
+    const card = document.createElement('div');
+    card.innerHTML = `
+        <p>No Appointments booked for now, Click on Consult Doctor to book new appointment.</p>
+    `;
+    container.appendChild(card);
+}
 document.getElementById('symptomForm').addEventListener('submit', function(e) {
     e.preventDefault();
     const symptoms = document.getElementById('symptoms').value.toLowerCase();
@@ -30,12 +58,28 @@ document.getElementById('appointmentForm').addEventListener('submit', function(e
         alert('Please enter a valid email address.');
         return;
     }
-    // Process appointment booking (example placeholder)
-    alert(`Appointment booked for ${name} on ${date} at ${time}. Confirmation sent to ${email}.`);
+   
+    let response = createRecordInDB(name,email,date,time);
+
+    if(response){
+        alert(`Appointment booked for ${name} on ${date} at ${time}. Confirmation sent to ${email}.`);
+        window.location.href = "index.html";
+    }
+
     // Hide the appointment form
     document.getElementById('appointmentFormContainer').classList.remove('show');
 });
+// 
+async function createRecordInDB(name,email,date,time){
+    const { error } = await _supabase.from('users').insert({ name: name, email: email, date:date, time:time });
+    console.log(error)
+    if(error){
+        return false;
+    }
+    return true;
+}
 // Simple email validation function
 function isValidEmail(email) {
     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 }
+// micro-project;
